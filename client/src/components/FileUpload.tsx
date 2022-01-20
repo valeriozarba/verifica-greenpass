@@ -2,7 +2,7 @@ import axios from 'axios';
 import '../App.css';
 import React, {useEffect, useState } from 'react';
 
-const FileUpload=(props:any)=>{
+const FileUpload=(callBackMethod:any)=>{
 
     const [verificatype,setVerificaType]=useState(1);
 
@@ -46,7 +46,7 @@ const FileUpload=(props:any)=>{
                 }
             )
             .then( (res:any) => {
-                props.callBackMethod(res.data);                
+                callBackMethod(res.data);                
             }).catch( (err:any)  => {
                 console.log(err);
             })
