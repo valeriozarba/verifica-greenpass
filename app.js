@@ -8,8 +8,6 @@ const syncdata = require('./syncData');
 const multer  = require('multer')
 const fs = require("fs");
 
-
-/*
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
       cb(null, './data/')
@@ -18,14 +16,14 @@ const storage = multer.diskStorage({
       const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
       cb(null, file.fieldname + '-' + uniqueSuffix)
     }
-})*/
-const storage = multer.memoryStorage()
+})
+//const storage = multer.memoryStorage()
 const upload = multer({ storage: storage })
 
 
 app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
-app.use(express.static(__dirname + "/client/build/"));
+app.use(express.static(__dirname + "/public"));
 app.use((_, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE');
@@ -35,11 +33,7 @@ app.use((_, res, next) => {
 
 const main = async (req,res) => {
     try{
-        let buffer= Buffer.from(new Uint8Array(req.file.buffer));
-
-        console.log("Check request BUFFER:",buffer.buffer);
-
-        
+        let buffer= req.file.path;
         let typeVerifica=null;
         switch(req.body.verificaType){
             case 1:
@@ -64,8 +58,6 @@ const main = async (req,res) => {
 }
 
 app.post('/validate', upload.single('qrcode'), function (req, res, next) {
-    // req.file is the `avatar` file
-    // req.body will hold the text fields, if there were any
     main(req,res);
 })
 
@@ -76,7 +68,7 @@ app.get("/validate",(req,res)=>{
 });
 
 app.get("/", (req, res) => {
-    res.sendFile(__dirname+"/client/build/index.html");
+    res.sendFile(__dirname+"/public/index.html");
 });
 
 

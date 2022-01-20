@@ -10,6 +10,8 @@ Se si vuole gestire tale informazione su uno storage in memoria occorre leggere 
 
 Avviamo il progetto con il comando per installare le dipendenze
 
+Il progetto implementa un CLIENT in React presente nella cartella */client*
+
 
 ```sh 
 npm install
@@ -18,5 +20,20 @@ npm install
 Avviamo il container con mondodb per il salvataggio dei dati di validità dei codici
 ```sh 
 docker-compose up -d
+```
+
+Avviamo il server in modalità development
+```sh 
+npm run dev
+```
+
+Avviamo il webpack watch per gestire la compilazione in realtime del frontent in React
+```sh 
+npm run webpack
+```
+
+Avvia il servizio node che implementa il server e legge la parte statica compilata su public
+```sh 
+npm run start
 ```
 

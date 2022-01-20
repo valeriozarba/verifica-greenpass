@@ -2,25 +2,9 @@ import axios from 'axios';
 import '../App.css';
 import React, {useEffect, useState } from 'react';
 
-function FileUpload(){
+const FileUpload=(props:any)=>{
 
-    const [validation,setValidation]=useState({
-        code:'',
-        person:'',
-        result:false,
-        message: '',
-        date_of_birth:'',
-        data: null
-    });
     const [verificatype,setVerificaType]=useState(1);
-        
-    const borderStyle={
-        flex: 1,
-        top: 0,
-        left: 0,
-        zIndex: 100
-    };
-
 
     // API Endpoints
     const custom_file_upload_url = `http://localhost:9999/validate`;
@@ -62,38 +46,14 @@ function FileUpload(){
                 }
             )
             .then( (res:any) => {
-                console.log("Return...",res);
-                setValidation(res.data);
-                
+                props.callBackMethod(res.data);                
             }).catch( (err:any)  => {
                 console.log(err);
             })
         }
     }
 
-    const colorFromValidation=()=>{
-        
-        if(validation.data!=null){
-            return "red";
-        }
-
-        switch(validation.code){
-
-            case "VALID":
-                return "#14c314";
-            case "TEST_NEEDED":
-                return "orange";
-            case "NOT_VALID":
-            case "NOT_VALID_YET":
-            case "REVOKED":
-            case "NOT_EU_DCC":
-                return "red";
-            default:
-                return "transparent";
-
-        }
-    }
-
+   
 
     const updateDataType=(valore:any)=>{
         console.log("Aggiorno valore....",valore);
@@ -102,22 +62,7 @@ function FileUpload(){
      
     return (
 
-        <div className="form-content" 
-        style={{...borderStyle, backgroundColor: colorFromValidation()}}>
-            
-            {validation.result && 
-            (<>
-                <h3>{validation.person}</h3>
-                <h3>{validation.date_of_birth}</h3>
-                <p>{validation.message}</p>
-            </>
-            )}
-
-            {image.image_preview && 
-            (<div className="form-anteprima" >
-                <img src={image.image_preview} alt="preview" />
-            </div>)
-            }
+        <div className="form-content">           
             <div className='form-upload'>
                 <label>Seleziona tipo di verifica</label>
                 <select name="typeVerification" onChange={(opt)=>updateDataType(opt.target.value)}>
@@ -131,6 +76,11 @@ function FileUpload(){
                 />
                 <label>Upload file</label>
                 <input type="submit" onClick={handleSubmitFile} value="Submit"/>
+                {image.image_preview && 
+                (<div className="form-anteprima" >
+                    <img src={image.image_preview} alt="preview" />
+                </div>)
+                }
             </div>
 
         </div>
