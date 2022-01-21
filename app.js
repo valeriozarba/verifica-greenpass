@@ -2,12 +2,11 @@ var createError = require('http-errors');
 const express = require("express");
 const app = express();
 var path = require('path');
-const port = 9999;
+const port = process.env.PORT || 3000;
 const {Certificate, Validator} = require('verificac19-sdk');
 const syncdata = require('./syncData');
 const multer  = require('multer')
 const fs = require("fs");
-
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
       cb(null, './data/')
