@@ -4,6 +4,7 @@
   "description": "",
   "main": "app.js",
   "homepage": "./",
+  "private": "true",
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon ./bin/www",
@@ -13,7 +14,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",

@@ -2,13 +2,14 @@ import axios from 'axios';
 import '../App.css';
 import React, {useEffect, useState } from 'react';
 import '../'
+const REACT_APP_API_URL  = 'http://localhost:3000';
 
-const FileUpload=(callBackMethod:any)=>{
+const FileUpload=({callbackmethod})=>{
 
     const [verificatype,setVerificaType]=useState(1);
 
     // API Endpoints
-    const custom_file_upload_url = `http://localhost:3000/validate`;
+    const custom_file_upload_url = `${REACT_APP_API_URL}/validate`;
     const [image,setImage]=useState({
         image_file: null,
         image_preview: '',
@@ -47,7 +48,7 @@ const FileUpload=(callBackMethod:any)=>{
                 }
             )
             .then( (res:any) => {
-                callBackMethod(res.data);                
+                callbackmethod(res.data);          
             }).catch( (err:any)  => {
                 console.log(err);
             })

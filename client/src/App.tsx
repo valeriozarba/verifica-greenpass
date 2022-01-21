@@ -56,7 +56,7 @@ function App() {
               </>
           )}
           <div>
-              <FileUpload callBackMethod={callbackResult}/>
+              <FileUpload callbackmethod={callbackResult}/>
           </div>
 
       </div>

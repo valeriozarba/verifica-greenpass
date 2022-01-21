@@ -33,7 +33,7 @@ app.use((_, res, next) => {
 const main = async (req,res) => {
     try{
         let buffer= req.file.path;
-        let typeVerifica=null;
+        let typeVerifica;
         switch(req.body.verificaType){
             case 1:
                 typeVerifica=Validator.mode.NORMAL_DGP;
@@ -61,8 +61,6 @@ app.post('/validate', upload.single('qrcode'), function (req, res, next) {
 })
 
 app.get("/validate",(req,res)=>{
-    console.log("Check request METHOD:",req.method);
-    console.log("Check request BODY:",req.body);
     main(req,res);
 });
 
