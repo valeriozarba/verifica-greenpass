@@ -7,6 +7,7 @@
   "private": "true",
   "scripts": {
     "start": "node app.js",
+    "build" : "webpack --mode=production ",
     "dev": "nodemon ./bin/www",
     "dev:debug": "DEBUG=verifica-greenpass:* npm run dev",
     "test": "echo \"Error: no test specified\" && exit 1",
