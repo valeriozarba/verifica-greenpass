@@ -1,5 +1,15 @@
 # Verifica Green Pass
 
+In riferimento progetto di verifica ufficiale [verificac19-sdk](https://github.com/italia/verificac19-sdk).
+
+# Requisiti
+
+[<img src="https://img.shields.io/npm/v/npm" />][npm]
+
+- Node.js version >= 12.x
+- MongoDB version >= 5.x (used to store CRL)
+
+
 ## Funzionalità
 Progetto NodeJs + React che effettua il controllo della validità del green pass.
 
@@ -37,3 +47,7 @@ Avvia il servizio node che implementa il server e legge la parte statica compila
 npm run start
 ```
 
+
+# Licenza 
+
+MIT
