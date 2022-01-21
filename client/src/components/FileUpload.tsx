@@ -26,17 +26,12 @@ const FileUpload=({callbackmethod})=>{
         })
     }
 
-    // Image/File Submit Handler
     const handleSubmitFile = () => {
-
         if (image.image_file !== null){
 
             let formData = new FormData();
             formData.append('qrcode', image.image_file);
             formData.append('verificaType',verificatype.toString());
-            // the image field name should be similar to your api endpoint field name
-            // in my case here the field name is customFile
-
             axios.post(
                 custom_file_upload_url,
                 formData,

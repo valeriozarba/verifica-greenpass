@@ -49,6 +49,7 @@ const main = async (req,res) => {
         }
         const image = await Certificate.fromImage(buffer);
         const validationResult = await Validator.validate(image,typeVerifica);
+        fs.unlinkSync(buffer);//elimino il file
         res.json(validationResult); 
     }catch(error){
         console.log(error);
