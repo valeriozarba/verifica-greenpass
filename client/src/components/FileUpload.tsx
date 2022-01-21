@@ -1,13 +1,14 @@
 import axios from 'axios';
 import '../App.css';
 import React, {useEffect, useState } from 'react';
+import '../'
 
 const FileUpload=(callBackMethod:any)=>{
 
     const [verificatype,setVerificaType]=useState(1);
 
     // API Endpoints
-    const custom_file_upload_url = `http://localhost:9999/validate`;
+    const custom_file_upload_url = `http://localhost:3000/validate`;
     const [image,setImage]=useState({
         image_file: null,
         image_preview: '',
