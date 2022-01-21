@@ -32,7 +32,14 @@ app.use((_, res, next) => {
 
 const main = async (req,res) => {
     try{
-        let buffer= req.file.path;
+        let image;
+        if(req.body.rawData!==null){
+            image = await Certificate.fromRaw(req.body.rawData);
+        }else{
+            let buffer= req.file.path;
+            image = await Certificate.fromImage(buffer);
+            fs.unlinkSync(buffer);//elimino il file
+        }
         let typeVerifica;
         switch(req.body.verificaType){
             case 1:
@@ -47,10 +54,10 @@ const main = async (req,res) => {
             default:
                 typeVerifica=Validator.mode.NORMAL_DGP;
         }
-        const image = await Certificate.fromImage(buffer);
         const validationResult = await Validator.validate(image,typeVerifica);
-        fs.unlinkSync(buffer);//elimino il file
+        
         res.json(validationResult); 
+        
     }catch(error){
         console.log(error);
         res.json(error); 

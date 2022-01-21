@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import './App.css';
 import FileUpload from './components/FileUpload';
+import QrCamera from './components/QrCamera';
 
 function App() {
 
@@ -48,6 +49,9 @@ function App() {
           <header className="App-header">
               <h3>Valida GreenPass</h3>
           </header>
+
+          
+          
           {validation.result && 
               (<>
                   <h3>{validation.person}</h3>

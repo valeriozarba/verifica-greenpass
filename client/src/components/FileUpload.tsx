@@ -2,7 +2,8 @@ import axios from 'axios';
 import '../App.css';
 import React, {useEffect, useState } from 'react';
 import '../'
-const REACT_APP_API_URL  = 'http://localhost:3000';
+import QrCamera from './QrCamera';
+const REACT_APP_API_URL  = '';
 
 const FileUpload=({callbackmethod})=>{
 
@@ -50,6 +51,31 @@ const FileUpload=({callbackmethod})=>{
         }
     }
 
+
+    const handleSubmitRaw=(data)=>{
+        
+        if(data!==null){
+            let formData = new FormData();
+            formData.append('rawData', data);
+            formData.append('verificaType',verificatype.toString());
+            axios.post(
+                custom_file_upload_url,
+                formData,
+                {
+                    headers: {
+                        "Authorization": "",
+                        "Content-type": "multipart/form-data",
+                    },                    
+                }
+            )
+            .then( (res:any) => {
+                callbackmethod(res.data);          
+            }).catch( (err:any)  => {
+                console.log(err);
+            })
+        }
+    }
+
    
 
     const updateDataType=(valore:any)=>{
@@ -58,8 +84,13 @@ const FileUpload=({callbackmethod})=>{
     }
      
     return (
+        
+        
+        
+        <div className="form-content">  
+            
+            <QrCamera callBackQrCode={handleSubmitRaw}/>
 
-        <div className="form-content">           
             <div className='form-upload'>
                 <label>Seleziona tipo di verifica</label>
                 <select name="typeVerification" onChange={(opt)=>updateDataType(opt.target.value)}>
