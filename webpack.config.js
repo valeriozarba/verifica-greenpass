@@ -38,6 +38,7 @@ module.exports = {
     new HtmlWebpackPlugin({
         template: './client/public/index.html',
         title: 'Validazione GreenPass COVID19',
+        description: "Validazione GreenPass Covid19 - developed by valerio zarba"
     }),
   ],
 };
