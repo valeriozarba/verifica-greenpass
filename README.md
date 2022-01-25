@@ -15,7 +15,7 @@ Questo progetto utilizza lo strumento di verifica ufficiale [verificac19-sdk](ht
 Progetto NodeJs + React per verificare la validità del green pass.
 Per avviare il progeto occorre installare come primo strumento Docker, il servizio che verifica la validità del greenpass conserverà tutte le informazioni dei codici all'interno di un database mongo avviato localmente su un container docker.
 
- Se si vuole gestire tale informazione su uno storage in memoria occorre leggere la documentazione relativa al al modulo *verificac19-sdk*
+ Se si vuole gestire tale informazione su uno storage in memoria occorre leggere la documentazione ufficiale del repository *verificac19-sdk*
 
 ## Avvio del progetto
 
