@@ -29,3 +29,5 @@ yarn-error.log*
 #client frontent configuration
 /client/node_modules/
 /client/build/
+
+.vscode/
