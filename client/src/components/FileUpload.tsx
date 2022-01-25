@@ -8,6 +8,7 @@ const REACT_APP_API_URL  = '';
 const FileUpload=({callbackmethod})=>{
 
     const [verificatype,setVerificaType]=useState(1);
+    let playerAudio = new Audio("public/sound1.mp3");
 
     // API Endpoints
     const custom_file_upload_url = `${REACT_APP_API_URL}/validate`;
@@ -69,10 +70,14 @@ const FileUpload=({callbackmethod})=>{
                 }
             )
             .then( (res:any) => {
-                callbackmethod(res.data);          
+                callbackmethod(res.data);      
+                playerAudio.src="public/success.mp3";
+               
             }).catch( (err:any)  => {
                 console.log(err);
+                playerAudio.src="public/error.mp3";
             })
+            playerAudio.play();    
         }
     }
 

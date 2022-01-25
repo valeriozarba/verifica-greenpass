@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import QrReader from 'react-qr-reader'
+import QrReader from 'react-qr-reader-es6'
 
 function QrCamera({callBackQrCode}){
 
@@ -7,7 +7,7 @@ function QrCamera({callBackQrCode}){
 
     const handleScan = data => {
         if (data) {
-            console.error(data)
+            console.log(data)
             setResult(data);
             callBackQrCode(data)
         }
